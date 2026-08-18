@@ -4,7 +4,7 @@ A single-page reference to every live Scotiabank Canada personal banking promoti
 with the exact qualifying steps, date windows, payout timing, exclusions, and a
 source link for each.
 
-**Live site:** https://daveqwerty1007.github.io/scotiabank-offers/
+**Live site:** https://daveqwerty1007.github.io/site/
 
 ## What's here
 
