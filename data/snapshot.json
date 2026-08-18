@@ -1,0 +1,255 @@
+{
+  "generated": "2026-08-18",
+  "source_root": "https://www.scotiabank.com/ca/en/personal.html",
+  "offers": [
+    {
+      "id": "bundle",
+      "name": "Banking Bundle Cash Bonus",
+      "cat": "bank",
+      "value": "up to $1,000",
+      "window": "2026-07-03..2026-10-29",
+      "key_terms": [
+        "Preferred or Ultimate Package",
+        "$700 chequing + $200 savings + $100 card",
+        "direct deposit within 60 days, recurring 6 consecutive months",
+        "plus one of: $50 pre-auth / $50 bill payment / Visa Debit purchase",
+        "savings: Money Master + Pay Yourself First or Savings Finder, 90 consecutive days",
+        "payout ~9-10 months",
+        "excl: chequing in last 2 yrs; card in last 2 yrs; MMSA in last 6 mo"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/bank-accounts/chequing-accounts/package-features.html"
+    },
+    {
+      "id": "student",
+      "name": "Scene+ Student Banking Bundle",
+      "cat": "bank",
+      "value": "up to $425",
+      "window": "2026-07-02..2026-11-01",
+      "key_terms": [
+        "PPSY account",
+        "$200 cash: any TWO of 3 actions within 60 days",
+        "direct deposit or pre-auth 3 consecutive months, or 5 online Visa Debit purchases",
+        "2,500 pts MMSA",
+        "10,000 pts bundle bonus",
+        "payout $200 within 6 months"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/students/student-bundle.html"
+    },
+    {
+      "id": "startright",
+      "name": "StartRight Program (Newcomers)",
+      "cat": "bank",
+      "value": "up to $2,300",
+      "window": "chequing 2026-07-03..2026-10-29; card 2026-08-04..2026-11-01",
+      "key_terms": [
+        "PR 0-5 yrs, intl students, foreign workers",
+        "fee waived 12 months then $4,000 min balance",
+        "no Canadian credit history required",
+        "max credit limit $15,000"
+      ],
+      "url": "https://startright.scotiabank.com/ca/en/newcomers-to-canada-offer.html"
+    },
+    {
+      "id": "hisa",
+      "name": "Scotia High Interest Savings Account",
+      "cat": "save",
+      "value": "up to 5.00%",
+      "window": "90 days from account opening",
+      "key_terms": [
+        "2.80% promo + base tier up to 2.20%",
+        "base is 0% under $10,000 TRB",
+        "applies to balances up to $5,000,000",
+        "excl: held HISA or MomentumPLUS in last 2 yrs"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/bank-accounts/savings-accounts/scotia-high-interest-savings-account.html"
+    },
+    {
+      "id": "passport-inf",
+      "name": "Passport Visa Infinite+",
+      "cat": "card",
+      "value": "up to $1,250 / 35,000 pts",
+      "window": "2026-08-04..2026-11-01",
+      "key_terms": [
+        "25,000 pts for $2,000 in 3 months",
+        "10,000 pts for $40,000 annual",
+        "annual fee $150; rebated with Ultimate, $40 with Preferred",
+        "excl: primary OR secondary cardholder past 2 yrs"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-infinite-card.html"
+    },
+    {
+      "id": "passport-privilege",
+      "name": "Passport Visa Infinite Privilege",
+      "cat": "card",
+      "value": "80,000 pts",
+      "window": "2026-05-01..2026-11-01",
+      "key_terms": [
+        "30,000 pts for $3,000 in 3 months",
+        "30,000 pts for $20,000 in 6 months",
+        "20,000 pts for a purchase in the 14th month",
+        "annual fee $599 ($449 w/ Ultimate)",
+        "income $150k personal / $200k household / $400k AUM"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-infinite-privilege-card.html"
+    },
+    {
+      "id": "gold-amex",
+      "name": "Gold American Express",
+      "cat": "card",
+      "value": "50,000 pts / up to $950",
+      "window": "2026-07-02..2026-11-01",
+      "key_terms": [
+        "30,000 pts for $2,000 in 3 months",
+        "20,000 pts for $7,500 in first year",
+        "annual fee $120, supp $29"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/gold-card.html"
+    },
+    {
+      "id": "momentum-inf",
+      "name": "Momentum Visa Infinite+",
+      "cat": "card",
+      "value": "15% back, up to $300",
+      "window": "2026-07-02..2026-11-01",
+      "key_terms": [
+        "15% cash back first 3 months on up to $2,000 purchases",
+        "annual fee $120 waived year 1",
+        "0% balance transfer 12 months, 2% fee",
+        "bonus redeemable ~5 months after opening"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-infinite-card.html"
+    },
+    {
+      "id": "amex-nofee",
+      "name": "Scotiabank American Express (no fee)",
+      "cat": "card",
+      "value": "10,000 pts",
+      "window": "2026-05-01..2026-11-01",
+      "key_terms": [
+        "2,500 pts for $250",
+        "7,500 pts for $1,000",
+        "both within first 3 months",
+        "annual fee $0",
+        "min income $12,000"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/no-fee-amex-card.html"
+    },
+    {
+      "id": "momentum-nofee",
+      "name": "Momentum No-Fee Visa",
+      "cat": "card",
+      "value": "5% back, up to $100",
+      "window": "2026-07-02..2026-11-01",
+      "key_terms": [
+        "5% first 3 months on up to $2,000",
+        "annual fee $0",
+        "0.99% BT 9 months, 2% fee"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-no-fee-card.html"
+    },
+    {
+      "id": "scene-visa",
+      "name": "Scene+ Visa",
+      "cat": "card",
+      "value": "5,000 pts",
+      "window": "2026-07-02..2026-11-01",
+      "key_terms": [
+        "2,500 pts for $250",
+        "2,500 pts for $1,000",
+        "annual fee $0",
+        "small business cardholders still eligible"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/scene-card.html"
+    },
+    {
+      "id": "value-visa",
+      "name": "Value Visa",
+      "cat": "card",
+      "value": "0% BT 9 months",
+      "window": "2026-07-02..2027-01-03",
+      "key_terms": [
+        "0% balance transfer 9 months, 1% fee",
+        "annual fee $29 waived year 1",
+        "reverts to 13.99%",
+        "2 consecutive missed payments -> 24.99%/27.99%"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/value-card.html"
+    },
+    {
+      "id": "momentum-visa",
+      "name": "Momentum Visa",
+      "cat": "card",
+      "value": "0.99% BT 9 months",
+      "window": "2026-07-02..2027-01-03",
+      "key_terms": [
+        "0.99% balance transfer 9 months, 2% fee",
+        "annual fee $49, supp $15",
+        "reverts to 22.99%",
+        "purchase rate 20.99%"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-cash-back-card.html"
+    },
+    {
+      "id": "transfer-in",
+      "name": "Registered Account Transfer-In",
+      "cat": "invest",
+      "value": "1.5%, max $3,750",
+      "window": "2026-05-01..2026-10-31",
+      "key_terms": [
+        "min $20,000 from another Canadian FI",
+        "TFSA/FHSA/RRSP/RESP; no LIRA",
+        "settle within 60 days",
+        "recurring contributions $100/mo for 6 consecutive months",
+        "hold 6 consecutive months",
+        "paid ~8 months after enrollment period ends"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/investing/campaigns/transfer-in-offer.html"
+    },
+    {
+      "id": "itrade",
+      "name": "Scotia iTRADE New Client Offer (SUM26)",
+      "cat": "invest",
+      "value": "up to $6,000",
+      "window": "enrol by 2026-08-31; fund by 2026-09-30",
+      "key_terms": [
+        "code SUM26 required at application",
+        "1% cash back external transfers, max $6,000",
+        "tiered $25-$3,000 for Scotiabank group transfers",
+        "min fund $2,500",
+        "hold through 2027-07-30",
+        "mobile app trade rebates to 2026-12-31",
+        "bonus paid by 2027-08-31"
+      ],
+      "url": "https://www.scotiaitrade.com/en/home/summer-offer.html"
+    },
+    {
+      "id": "shell",
+      "name": "Scotiabank + Shell",
+      "cat": "other",
+      "value": "up to 10c/L",
+      "window": "V-Power promo 2026-05-26..2027-06-01",
+      "key_terms": [
+        "3c/L instant all grades",
+        "4c/L V-Power with Scene+ card",
+        "up to 3c/L in Scene+ value",
+        "cap 1,000 L/month per card",
+        "link via Shell benefits page, up to 48h"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/programs-services/shell.html"
+    },
+    {
+      "id": "mortgage-plus",
+      "name": "Scotia Mortgage+",
+      "cat": "other",
+      "value": "preferred rate (unpublished)",
+      "window": "no published end date",
+      "key_terms": [
+        "STEP mortgages only",
+        "pre-authorized payments from Scotiabank account",
+        "plus one other eligible Scotia product",
+        "not for renewals, restructures, pre-approvals"
+      ],
+      "url": "https://www.scotiabank.com/ca/en/personal/mortgages/mortgage-programs/mortgage-plus.html"
+    }
+  ]
+}

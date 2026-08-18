@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scotiabank Special Offers — Master Sheet</title>
+<style>
+  :root{
+    --ink:#12151a; --ink-2:#4a5260; --ink-3:#767e8c;
+    --line:#e3e6eb; --line-2:#eef0f4;
+    --bg:#f6f7f9; --card:#ffffff;
+    --brand:#c8102e; --brand-soft:#fdeef0;
+    --good:#0f7b52; --good-soft:#e7f4ee;
+    --warn:#9a5b00; --warn-soft:#fdf1de;
+    --hot:#b3261e; --hot-soft:#fdeceb;
+    --blue:#1d4ed8; --blue-soft:#eaf0fe;
+    --r:14px;
+    --shadow:0 1px 2px rgba(16,24,40,.05), 0 4px 14px rgba(16,24,40,.05);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 72px}
+
+  /* ---------- header ---------- */
+  header.top{background:var(--card);border-bottom:1px solid var(--line);padding:30px 0 24px;margin-bottom:26px}
+  .top .wrap{padding-bottom:0}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--brand);margin:0 0 10px}
+  .eyebrow::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--brand)}
+  h1{margin:0 0 8px;font-size:31px;line-height:1.15;letter-spacing:-.021em;font-weight:700}
+  .sub{margin:0;color:var(--ink-2);max-width:72ch;font-size:14.5px}
+  .asof{margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+  .asof b{color:var(--ink-2);font-weight:600}
+
+  /* ---------- urgency strip ---------- */
+  .urgent{
+    margin-top:20px;border:1px solid #f2c9c5;background:var(--hot-soft);
+    border-radius:12px;padding:13px 16px;display:flex;gap:12px;align-items:flex-start
+  }
+  .urgent .ico{flex:0 0 auto;font-size:15px;line-height:1.4}
+  .urgent h3{margin:0 0 5px;font-size:13px;font-weight:700;color:var(--hot);letter-spacing:.01em}
+  .urgent ul{margin:0;padding-left:17px;font-size:13.2px;color:#7d2019}
+  .urgent li{margin:2px 0}
+  .urgent li b{font-weight:650}
+
+  /* ---------- controls ---------- */
+  .controls{position:sticky;top:0;z-index:20;background:rgba(246,247,249,.93);backdrop-filter:blur(10px);padding:14px 0 12px;margin-bottom:6px;border-bottom:1px solid var(--line-2)}
+  .searchrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:11px}
+  #q{
+    flex:1 1 260px;min-width:200px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;
+    font-size:14px;background:var(--card);color:var(--ink);font-family:inherit;box-shadow:var(--shadow)
+  }
+  #q:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:transparent}
+  .count{font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+  .btn-mini{
+    padding:9px 13px;border:1px solid var(--line);background:var(--card);border-radius:10px;
+    font:inherit;font-size:12.5px;font-weight:600;color:var(--ink-2);cursor:pointer;box-shadow:var(--shadow)
+  }
+  .btn-mini:hover{border-color:var(--ink-3);color:var(--ink)}
+  .tabs{display:flex;gap:7px;flex-wrap:wrap}
+  .tab{
+    padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+    font:inherit;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.13s
+  }
+  .tab:hover{border-color:var(--ink-3);color:var(--ink)}
+  .tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .tab .n{opacity:.55;font-weight:500;margin-left:4px;font-variant-numeric:tabular-nums}
+
+  /* ---------- section ---------- */
+  .sec{margin-top:30px}
+  .sec-h{display:flex;align-items:baseline;gap:11px;margin:0 0 13px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+  .sec-h h2{margin:0;font-size:16.5px;font-weight:700;letter-spacing:-.01em}
+  .sec-h span{font-size:12.5px;color:var(--ink-3)}
+
+  /* ---------- card ---------- */
+  .grid{display:grid;gap:15px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);overflow:hidden
+  }
+  .card-h{padding:17px 19px 15px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .card-h .t{flex:1 1 300px;min-width:0}
+  .card-h h3{margin:0 0 6px;font-size:16px;font-weight:700;letter-spacing:-.011em;line-height:1.3}
+  .tag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;
+    padding:3px 8px;border-radius:5px;margin:0 6px 6px 0;vertical-align:middle
+  }
+  .tag.c{background:var(--blue-soft);color:var(--blue)}
+  .tag.new{background:var(--good-soft);color:var(--good)}
+  .tag.stack{background:#f2eefc;color:#6b3fc4}
+  .value{
+    flex:0 0 auto;text-align:right;padding-left:8px
+  }
+  .value .amt{font-size:23px;font-weight:750;letter-spacing:-.026em;line-height:1.1;color:var(--brand);white-space:nowrap}
+  .value .lbl{font-size:11px;color:var(--ink-3);margin-top:3px;font-weight:500}
+
+  .meta{display:flex;flex-wrap:wrap;gap:7px;padding:0 19px 15px}
+  .chip{
+    font-size:12px;padding:4px 10px;border-radius:7px;background:#f4f5f7;color:var(--ink-2);
+    border:1px solid var(--line-2);white-space:nowrap
+  }
+  .chip b{font-weight:650;color:var(--ink)}
+  .chip.dl{background:var(--warn-soft);border-color:#f0dcbb;color:var(--warn)}
+  .chip.dl.hot{background:var(--hot-soft);border-color:#f2c9c5;color:var(--hot)}
+  .chip.dl.calm{background:var(--good-soft);border-color:#c8e6d8;color:var(--good)}
+
+  .how{padding:0 19px 17px}
+  .how h4{
+    margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:.075em;text-transform:uppercase;color:var(--ink-3)
+  }
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol.steps>li{
+    counter-increment:s;position:relative;padding:0 0 0 30px;margin-bottom:10px;font-size:14px;color:var(--ink-2)
+  }
+  ol.steps>li:last-child{margin-bottom:0}
+  ol.steps>li::before{
+    content:counter(s);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center
+  }
+  ol.steps b{color:var(--ink);font-weight:650}
+  .and{
+    margin:9px 0 10px 30px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand)
+  }
+  ul.any{margin:6px 0 0 30px;padding-left:16px;font-size:13.6px;color:var(--ink-2)}
+  ul.any li{margin:4px 0}
+  ul.any b{color:var(--ink);font-weight:650}
+  .note{
+    margin-top:11px;padding:9px 12px;background:#f8f9fb;border-left:3px solid var(--line);
+    border-radius:0 7px 7px 0;font-size:13px;color:var(--ink-2)
+  }
+  .note b{color:var(--ink)}
+
+  /* ---------- fine print ---------- */
+  details.fine{border-top:1px solid var(--line-2);background:#fcfcfd}
+  details.fine>summary{
+    padding:12px 19px;cursor:pointer;font-size:12.5px;font-weight:650;color:var(--ink-2);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none
+  }
+  details.fine>summary::-webkit-details-marker{display:none}
+  details.fine>summary::before{
+    content:"›";font-size:16px;line-height:1;transition:transform .16s;color:var(--ink-3);display:inline-block
+  }
+  details.fine[open]>summary::before{transform:rotate(90deg)}
+  details.fine>summary:hover{color:var(--ink)}
+  .fine-body{padding:2px 19px 17px;font-size:13.2px;color:var(--ink-2)}
+  .fine-body dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 15px}
+  .fine-body dt{font-weight:650;color:var(--ink);white-space:nowrap}
+  .fine-body dd{margin:0}
+  .fine-body .bar{margin:13px 0 0;padding-top:12px;border-top:1px dashed var(--line)}
+  .excl{color:#8a3a33}
+  .src{
+    display:inline-flex;align-items:center;gap:5px;margin-top:13px;font-size:12.5px;font-weight:600;
+    color:var(--blue);text-decoration:none
+  }
+  .src:hover{text-decoration:underline}
+  .src::after{content:"↗";font-size:11px}
+
+  /* ---------- footer ---------- */
+  .disc{
+    margin-top:36px;padding:17px 19px;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    font-size:12.6px;color:var(--ink-3);line-height:1.6;box-shadow:var(--shadow)
+  }
+  .disc b{color:var(--ink-2)}
+  .empty{padding:44px 20px;text-align:center;color:var(--ink-3);font-size:14px;display:none}
+
+  @media (max-width:620px){
+    h1{font-size:25px}
+    .value{text-align:left;padding-left:0;flex-basis:100%}
+    .value .amt{font-size:21px}
+    .fine-body dl{grid-template-columns:1fr;gap:2px 0}
+    .fine-body dd{margin-bottom:8px}
+  }
+  @media print{
+    .controls,.urgent{display:none}
+    body{background:#fff}
+    .card{break-inside:avoid;box-shadow:none}
+    details.fine[open]>summary{display:none}
+    details.fine{border-top:1px solid var(--line-2)}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Personal Banking Canada</p>
+    <h1>Scotiabank Special Offers — Master Sheet</h1>
+    <p class="sub">Every live promotion on scotiabank.com, with the exact qualifying steps and the fine print that decides whether you actually get paid. Built for the question that matters: <em>what do I have to do, and by when?</em></p>
+    <p class="asof">Compiled <b>August 18, 2026</b> from Scotiabank's public pages · <b>17 offers</b> tracked · Each card links back to its source</p>
+
+    <div class="urgent">
+      <span class="ico">⏳</span>
+      <div>
+        <h3>Closing soonest</h3>
+        <ul>
+          <li><b>Aug 31</b> — Scotia iTRADE enrolment deadline <b>(13 days)</b></li>
+          <li><b>Oct 29</b> — Chequing bundle &amp; StartRight account opening <b>(72 days)</b></li>
+          <li><b>Oct 31</b> — Registered transfer-in 1.5% cash bonus <b>(74 days)</b></li>
+          <li><b>Nov 1</b> — Almost every credit card welcome offer + student bundle <b>(75 days)</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="controls">
+    <div class="searchrow">
+      <input id="q" type="search" placeholder="Search offers, requirements, dates…" autocomplete="off">
+      <button class="btn-mini" id="expand">Expand all fine print</button>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-f="all">All<span class="n">17</span></button>
+      <button class="tab" data-f="bank">Bank accounts<span class="n">3</span></button>
+      <button class="tab" data-f="save">Savings<span class="n">1</span></button>
+      <button class="tab" data-f="card">Credit cards<span class="n">9</span></button>
+      <button class="tab" data-f="invest">Investing<span class="n">2</span></button>
+      <button class="tab" data-f="other">Mortgage &amp; perks<span class="n">2</span></button>
+    </div>
+  </div>
+
+  <p class="empty" id="empty">No offers match that search.</p>
+
+<!-- ============ BANK ACCOUNTS ============ -->
+<section class="sec" data-sec="bank">
+  <div class="sec-h"><h2>Bank accounts</h2><span>Cash bonuses for opening and using a chequing account</span></div>
+  <div class="grid">
+
+    <article class="card" data-cat="bank">
+      <div class="card-h">
+        <div class="t">
+          <span class="tag c">Chequing</span><span class="tag stack">Stackable · 3 parts</span>
+          <h3>Banking Bundle Cash Bonus</h3>
+        </div>
+        <div class="value"><div class="amt">up to $1,000</div><div class="lbl">cash</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Open account <b>Jul 3 – Oct 29, 2026</b></span>
+        <span class="chip">Preferred or Ultimate Package</span>
+        <span class="chip">Paid <b>~9–10 months</b> after opening</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>$700 — the chequing piece.</b> Open a <b>Preferred</b> or <b>Ultimate Package</b> account during the offer window. Then, <b>within 60 days</b> of opening, set up at least one eligible <b>automated recurring direct deposit</b> (payroll or pension) that recurs monthly for a minimum of <b>6 consecutive months</b>.
+            <div class="and">— and also do any ONE of these within 60 days —</div>
+            <ul class="any">
+              <li>A recurring <b>pre-authorized transaction of at least $50</b>/month, continuing for 6+ consecutive months, or</li>
+              <li>One <b>online bill payment of at least $50</b> through the mobile app or online banking, or</li>
+              <li>One eligible <b>Visa Debit purchase with your ScotiaCard</b> — online only, or in-store <em>outside</em> Canada</li>
+            </ul>
+          </li>
+          <li><b>+$200 — the savings piece.</b> Within 60 days of opening the chequing account (and before Oct 29, 2026), open a <b>Money Master Savings Account</b> and enrol in <b>Pay Yourself First</b> or <b>Savings Finder</b>. Stay enrolled <b>90 consecutive days</b>.</li>
+          <li><b>+$100 — the credit card piece.</b> Within 60 days of opening the chequing account, apply for and be approved for an eligible Scotiabank credit card, then make <b>one qualifying purchase within 60 days</b> of card approval.</li>
+        </ol>
+        <div class="note"><b>The trap:</b> the direct deposit must genuinely recur monthly for six months. A single one-off transfer, or a deposit you push manually, will not satisfy "automated and recurring."</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print &amp; payout timing</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Payout</dt><dd>$700 within ~9 months of the chequing open date · $200 within ~10 months of the savings open date · $100 within ~10 months of the card open date. All accounts must be open and in good standing at payout.</dd>
+            <dt>Eligible cards</dt><dd>Scene+ Visa, Passport Visa Infinite+, Passport Visa Infinite Privilege, Scotiabank Amex / Gold Amex / Platinum Amex, Momentum No-Fee Visa, Momentum Visa, Momentum Visa Infinite+, Value Visa.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Held <b>any</b> Scotiabank chequing account in the last 2 years · held a Money Master Account in the 6 months before the offer period · were a primary cardholder of a Scotiabank personal credit card in the past 2 years (for the $100) · Scotiabank employees. One bonus per component per customer.</dd>
+            <dt>Missed it?</dt><dd>You have 24 months from the date you believe you met the conditions to tell Scotiabank you weren't paid.</dd>
+          </dl>
+          <div class="bar">
+            <dl>
+              <dt>Preferred Package</dt><dd>$16.95/mo, waived with a $4,000 minimum daily balance. $40 annual-fee rebate on one eligible card if $15,000 in qualifying purchases posts in the prior 12 statement periods.</dd>
+              <dt>Ultimate Package</dt><dd>$30.95/mo, waived with a $6,000 minimum daily balance <em>or</em> $100,000 total relationship balance. Up to $150 annual-fee rebate on one eligible card.</dd>
+            </dl>
+          </div>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/bank-accounts/chequing-accounts/package-features.html" target="_blank" rel="noopener">Source: Chequing package features</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="bank">
+      <div class="card-h">
+        <div class="t">
+          <span class="tag c">Students</span><span class="tag stack">Stackable · 4 parts</span>
+          <h3>Scene+ Student Banking Bundle</h3>
+        </div>
+        <div class="value"><div class="amt">up to $425</div><div class="lbl">cash + Scene+ points</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Open <b>Jul 2 – Nov 1, 2026</b></span>
+        <span class="chip">Preferred Package for Students &amp; Youth</span>
+        <span class="chip">Only <b>3 months</b> of deposits needed</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>$200 cash.</b> Open a <b>Preferred Package for Students and Youth (PPSY)</b> account, then within <b>60 days</b> complete <b>any TWO</b> of the following:
+            <ul class="any">
+              <li>Set up an eligible <b>automated recurring direct deposit</b> that recurs monthly for at least <b>3 consecutive months</b></li>
+              <li>Set up an eligible <b>recurring pre-authorized transaction</b> monthly for at least <b>3 consecutive months</b></li>
+              <li>Make at least <b>5 online Visa Debit purchases</b> with your ScotiaCard (online only, or in-store outside Canada)</li>
+            </ul>
+          </li>
+          <li><b>+2,500 Scene+ points ($25).</b> Open a <b>Money Master Savings Account</b> within 60 days of opening the PPSY account.</li>
+          <li><b>+ credit card welcome bonus.</b> Add an eligible card — e.g. Momentum No-Fee Visa (5% back for 3 months, up to $100), Scotiabank Amex (up to 10,000 points / $100), Scene+ Visa (up to 5,000 points / $50).</li>
+          <li><b>+10,000 Scene+ points ($100) bundle bonus.</b> Paid once all three account types are open and their qualifying transactions are complete.</li>
+        </ol>
+        <div class="note"><b>Why this beats the regular bundle for students:</b> three consecutive months of deposits instead of six, and the "any two of three" structure means you can qualify without a payroll deposit at all — a recurring pre-authorized payment plus five online Visa Debit purchases is enough.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print &amp; payout timing</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Payout</dt><dd>$200 within 6 months of account opening · 2,500 points within 3 months · 10,000 bundle points within 6 months after all conditions are met.</dd>
+            <dt>Good standing</dt><dd>An account is not in good standing if it carries a negative balance beyond the overdraft limit, or stays continuously overdrawn for 3 consecutive months. On joint accounts only the primary holder is paid.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Currently hold or held a Scotiabank chequing account in the past 2 years · hold or held any Scotiabank credit card in the past 2 years · held a Money Master Savings Account in the past 6 months · Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/students/student-bundle.html" target="_blank" rel="noopener">Source: Student banking bundle</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="bank">
+      <div class="card-h">
+        <div class="t">
+          <span class="tag c">Newcomers</span><span class="tag stack">Stackable</span>
+          <h3>StartRight Program — Newcomers to Canada</h3>
+        </div>
+        <div class="value"><div class="amt">up to $2,300</div><div class="lbl">first-year value</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Chequing <b>Jul 3 – Oct 29, 2026</b></span>
+        <span class="chip dl">Credit card <b>Aug 4 – Nov 1, 2026</b></span>
+        <span class="chip">No Canadian credit history required</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Qualify as a newcomer.</b> Permanent residents in Canada 0–5 years, international students, or foreign workers. Bring a PR card / Confirmation of PR or a work permit, plus a foreign passport or Canadian government photo ID. Foreign workers applying for a credit card also need an employer letter confirming annual income.</li>
+          <li><b>Take the chequing bonus (up to $1,000).</b> Same mechanics as the standard bundle — Preferred or Ultimate Package, recurring direct deposit within 60 days running 6+ months, plus one qualifying activity ($50+ pre-authorized transaction, $50+ online bill payment, or an eligible Visa Debit purchase outside Canada). Add the Money Master savings ($200) and credit card ($100) legs.</li>
+          <li><b>Add the Passport Visa Infinite+ card.</b> 25,000 bonus Scene+ points for $2,000 in eligible purchases in the first 3 months, up to 35,000 total.</li>
+          <li><b>Collect the program perks.</b> Monthly account fee waived for the first 12 months (~$203), unlimited international money transfers with no service fee (~$280), and 10 free Scotia iTRADE equity trades (~$100).</li>
+        </ol>
+        <div class="note"><b>After month 12</b> the Preferred Package monthly fee starts appearing unless you keep a $4,000 minimum daily closing balance. Credit limits under StartRight go up to $15,000 without Canadian credit history.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print &amp; payout timing</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Payout</dt><dd>Chequing cash bonuses land roughly 9–10 months after account opening; credit card points within ~8 weeks of hitting each spend threshold.</dd>
+            <dt>Value math</dt><dd>Advertised "up to $2,300" is a rounded-down sum of ~$2,410 across program perks, the chequing bundle, and first-year card value — you will not receive it as cash.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Anyone who currently holds, or held within the last 2 years, a Scotiabank chequing account. FX rates still apply to the "free" international transfers.</dd>
+          </dl>
+          <a class="src" href="https://startright.scotiabank.com/ca/en/newcomers-to-canada-offer.html" target="_blank" rel="noopener">Source: StartRight newcomers offer</a>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ SAVINGS ============ -->
+<section class="sec" data-sec="save">
+  <div class="sec-h"><h2>Savings</h2><span>Promotional interest rates</span></div>
+  <div class="grid">
+
+    <article class="card" data-cat="save">
+      <div class="card-h">
+        <div class="t">
+          <span class="tag c">Savings</span>
+          <h3>Scotia High Interest Savings Account (HISA)</h3>
+        </div>
+        <div class="value"><div class="amt">up to 5.00%</div><div class="lbl">for 90 days</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip">Promo <b>2.80%</b> + base up to <b>2.20%</b></span>
+        <span class="chip">First <b>90 days</b> from opening</span>
+        <span class="chip">Applies up to <b>$5,000,000</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Open your first Scotia HISA.</b> You must not currently hold — and must not have held in the last 2 years — a Scotia HISA or a MomentumPLUS Savings Account.</li>
+          <li><b>Understand the 5.00%.</b> It is <b>2.80% promotional</b> for 90 days <em>stacked on</em> the regular tiered rate. The top regular tier is 2.20%, so 5.00% only happens if you also hit that tier.</li>
+          <li><b>Hold a Total Relationship Balance above $10,000 daily.</b> Below $10,000 the regular rate is <b>0%</b>, so you'd earn the 2.80% promo alone.</li>
+        </ol>
+        <div class="note"><b>Read this as a 90-day rate, not an annual one.</b> After the promotional period ends you keep only the tiered base rate: 0% under $10,000, rising to 2.20% at $500,000+.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Start date</dt><dd>If the HISA is opened or switched into on a non-business day, the promotional period begins the first business day after.</dd>
+            <dt>Interest</dt><dd>Accrues daily, posts monthly. Account must remain in good standing for promotional interest to be paid.</dd>
+            <dt class="excl">Limit</dt><dd class="excl">One promotional offer per client, applied to the first eligible account opened.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/bank-accounts/savings-accounts/scotia-high-interest-savings-account.html" target="_blank" rel="noopener">Source: Scotia HISA</a>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CREDIT CARDS ============ -->
+<section class="sec" data-sec="card">
+  <div class="sec-h"><h2>Credit cards</h2><span>Welcome bonuses and balance transfer promos</span></div>
+  <div class="grid">
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Travel</span><span class="tag new">Top value</span>
+          <h3>Scotiabank Passport® Visa Infinite+ Card</h3></div>
+        <div class="value"><div class="amt">up to $1,250</div><div class="lbl">first-year value</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>Aug 4 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$150</b></span>
+        <span class="chip">Fee rebated with Ultimate Package</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>25,000 bonus Scene+ points ($250)</b> — spend <b>$2,000</b> in everyday eligible purchases in your <b>first 3 months</b>.</li>
+          <li><b>+10,000 bonus points ($100)</b> — spend <b>$40,000</b> in eligible purchases annually. Beyond that, 2,000 more points for every additional $10,000.</li>
+          <li><b>Kill the annual fee.</b> Ultimate Package holders get the full $150 rebated; Preferred Package holders get $40 back.</li>
+        </ol>
+        <div class="note"><b>What "$1,250" actually is:</b> $250 welcome points + $100 annual bonus + $50 supplementary card fee waiver + $132 in avoided FX fees + $364 projected everyday point earn + $358 lounge membership value. Only the first $350 is a bonus you can bank.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Crediting</dt><dd>Approximately 8 weeks after the qualifying purchases post.</dd>
+            <dt>Joint accounts</dt><dd>Bonus credits to whichever borrower completed the final qualifying transaction.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former <b>primary or secondary</b> cardholders of any Scotiabank personal credit card in the past 2 years, including anyone switching from an existing Scotiabank card. Scotiabank employees excluded. Switchers can still earn the <em>annual</em> bonus — just not the welcome bonus.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-infinite-card.html" target="_blank" rel="noopener">Source: Passport Visa Infinite+</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Premium travel</span>
+          <h3>Scotiabank Passport® Visa Infinite Privilege Card</h3></div>
+        <div class="value"><div class="amt">80,000 pts</div><div class="lbl">≈ $800 in Scene+</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>May 1 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$599</b> ($449 w/ Ultimate)</span>
+        <span class="chip">Income <b>$150k</b> personal / $200k household</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>30,000 points</b> — spend at least <b>$3,000</b> in eligible purchases in your <b>first 3 months</b>.</li>
+          <li><b>+30,000 points</b> — spend at least <b>$20,000</b> in eligible purchases in your <b>first 6 months</b>.</li>
+          <li><b>+20,000 points</b> — make at least one eligible purchase <b>during the 14th month</b> after the month your account was opened. Diarize this; it's the one people forget.</li>
+        </ol>
+        <div class="note"><b>Qualification floor:</b> minimum personal income $150,000, or household income $200,000, or $400,000 in assets under management.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Crediting</dt><dd>Each tranche lands roughly 8 weeks after its threshold is met.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary cardholders of a Scotiabank personal credit card in the past 2 years; Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-infinite-privilege-card.html" target="_blank" rel="noopener">Source: Passport Visa Infinite Privilege</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Everyday rewards</span>
+          <h3>Scotiabank Gold American Express® Card</h3></div>
+        <div class="value"><div class="amt">50,000 pts</div><div class="lbl">≈ $500 · up to $950 total value</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>Jul 2 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$120</b> · supp. $29</span>
+        <span class="chip">Lowest spend bar of the premium cards</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>30,000 bonus points</b> — spend <b>$2,000</b> in everyday eligible purchases in your <b>first 3 months</b>.</li>
+          <li><b>+20,000 bonus points</b> — spend <b>$7,500</b> in everyday eligible purchases in your <b>first year</b>.</li>
+        </ol>
+        <div class="note"><b>Best effort-to-reward ratio here.</b> $7,500 over a full year is roughly $625/month — reachable on ordinary spending, and it unlocks the full 50,000 points.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Crediting</dt><dd>~8 weeks after the $2,000 posts; ~8 weeks after the $7,500 annual threshold is met.</dd>
+            <dt>Fee relief</dt><dd>Rebates available with Preferred ($40) or Ultimate (up to $150) Package chequing accounts.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years, including switchers; Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/gold-card.html" target="_blank" rel="noopener">Source: Gold American Express</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Cash back</span><span class="tag new">Fastest payback</span>
+          <h3>Scotia Momentum® Visa Infinite+ Card</h3></div>
+        <div class="value"><div class="amt">15% back</div><div class="lbl">up to $300 in 3 months</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>Jul 2 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$120 — waived year 1</b></span>
+        <span class="chip">0% balance transfer <b>12 months</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>15% cash back on all purchases</b> for your <b>first 3 months</b>, on up to <b>$2,000</b> in total purchases — a maximum of <b>$300</b>.</li>
+          <li><b>Front-load your spending.</b> The cap is on purchases, not time; hitting $2,000 in month one earns the same $300 as spreading it over three.</li>
+          <li><b>Optional: move a balance.</b> 0% introductory rate on balance transfers for 12 months, with a 2% transfer fee (minimum $5).</li>
+        </ol>
+        <div class="note"><b>After the promo:</b> 4% back on groceries and recurring payments, 2% on gas, transit and food delivery, 1% on everything else. Bonus cash back is only redeemable about 5 months after the account opens.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Redemption</dt><dd>Bonus cash back becomes redeemable ~5 months from the account open date. Regular cash back is redeemable anytime once you reach $25.</dd>
+            <dt>Losing the promo rate</dt><dd>Miss the minimum payment by the due date <b>twice consecutively</b> and promotional rates end.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years, including switchers; Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-infinite-card.html" target="_blank" rel="noopener">Source: Momentum Visa Infinite+</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">No annual fee</span>
+          <h3>Scotiabank American Express® Card (no fee)</h3></div>
+        <div class="value"><div class="amt">10,000 pts</div><div class="lbl">≈ $100 · $0 annual fee</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>May 1 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$0</b></span>
+        <span class="chip">Min. income <b>$12,000</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>2,500 points</b> — spend at least <b>$250</b> in eligible purchases within your first 3 months.</li>
+          <li><b>+7,500 points</b> — spend at least <b>$1,000</b> in eligible purchases within the same 3 months.</li>
+        </ol>
+        <div class="note"><b>The best low-effort offer on this page.</b> $1,000 of spending over three months, no annual fee, ~$100 back. The only real cost is burning your 2-year "new cardholder" eligibility, which the bigger cards also require.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Eligible purchases</dt><dd>Purchases less refunds and returns. Excludes payments, cash advances, interest, fees and other charges.</dd>
+            <dt>Crediting</dt><dd>~8 weeks after each tier is met.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years, including switchers; Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/no-fee-amex-card.html" target="_blank" rel="noopener">Source: Scotiabank American Express</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">No annual fee</span>
+          <h3>Scotia Momentum® No-Fee Visa* Card</h3></div>
+        <div class="value"><div class="amt">5% back</div><div class="lbl">up to $100 in 3 months</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>Jul 2 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$0</b></span>
+        <span class="chip">0.99% balance transfer <b>9 months</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>5% cash back on all purchases</b> for your first <b>3 months</b>, on up to <b>$2,000</b> in purchases — capped at <b>$100</b>.</li>
+          <li><b>Optional:</b> 0.99% introductory rate on balance transfers for 9 months, 2% transfer fee.</li>
+        </ol>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Redemption</dt><dd>Bonus cash back redeemable ~5 months from account opening; regular cash back anytime at a $25 minimum.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-no-fee-card.html" target="_blank" rel="noopener">Source: Momentum No-Fee Visa</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">No annual fee</span>
+          <h3>Scotiabank® Scene+™ Visa* Card</h3></div>
+        <div class="value"><div class="amt">5,000 pts</div><div class="lbl">≈ $50 · $0 annual fee</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl">Apply <b>Jul 2 – Nov 1, 2026</b></span>
+        <span class="chip">Annual fee <b>$0</b></span>
+        <span class="chip">Business cardholders <b>still eligible</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>2,500 points</b> — spend <b>$250</b> in everyday eligible purchases in your first 3 months.</li>
+          <li><b>+2,500 points</b> — spend <b>$1,000</b> in everyday eligible purchases in the same period.</li>
+        </ol>
+        <div class="note"><b>Worth noting:</b> Scotiabank <em>small business</em> credit cardholders are explicitly still eligible for this welcome offer — an exception most of these cards don't make.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Eligible purchases</dt><dd>Purchases less refunds, returns or similar credits. Excludes payments, cash advances, interest, fees and other charges.</dd>
+            <dt>Crediting</dt><dd>~8 weeks after each threshold is met.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank <b>personal</b> cardholders in the past 2 years, including switchers; Scotiabank employees.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/scene-card.html" target="_blank" rel="noopener">Source: Scene+ Visa</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Balance transfer</span>
+          <h3>Scotiabank Value® Visa* Card</h3></div>
+        <div class="value"><div class="amt">0%</div><div class="lbl">on balance transfers, 9 months</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl calm">Open <b>Jul 2, 2026 – Jan 3, 2027</b></span>
+        <span class="chip">Transfer fee <b>1%</b> (min $5)</span>
+        <span class="chip">Annual fee $29 — <b>waived year 1</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Open the account during the window</b> and request the balance transfer. 0% for the first 9 months from account opening, with a 1% transfer fee.</li>
+          <li><b>Pay it down inside 9 months.</b> After that the rate reverts to the preferred cash advance rate, currently <b>13.99%</b>.</li>
+          <li><b>Never miss two payments in a row.</b> Two consecutive missed minimum payments end the promo and push you to 24.99% on purchases / 27.99% on cash advances.</li>
+        </ol>
+        <div class="note"><b>Lowest-cost transfer on this page</b> — 1% fee versus 2% on the Momentum cards. You cannot transfer a balance from another Scotiabank account.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Longer window</dt><dd>This offer runs to Jan 3, 2027 — well past the Nov 1 deadline on most other cards.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years. Cannot be used to transfer a balance from any Scotiabank account.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/value-card.html" target="_blank" rel="noopener">Source: Value Visa</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="card">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Balance transfer</span>
+          <h3>Scotia Momentum® Visa* Card</h3></div>
+        <div class="value"><div class="amt">0.99%</div><div class="lbl">on balance transfers, 9 months</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl calm">Open <b>Jul 2, 2026 – Jan 3, 2027</b></span>
+        <span class="chip">Transfer fee <b>2%</b> (min $5)</span>
+        <span class="chip">Annual fee <b>$49</b> · supp. $15</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Open the account between Jul 2, 2026 and Jan 3, 2027</b> — eligibility keys off the account open date, not your application date.</li>
+          <li><b>Transfer your balance.</b> 0.99% for the first 9 months, 2% fee. Afterwards the rate reverts to the standard cash advance rate of <b>22.99%</b>.</li>
+        </ol>
+        <div class="note"><b>Compare to the Value Visa</b> before choosing: 0% and a 1% fee on a $29 card beats 0.99% and a 2% fee on a $49 card for most balance-transfer purposes.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Rates</dt><dd>Purchases 20.99% · cash advances 22.99% · minimum credit limit $500.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Current or former primary or secondary Scotiabank personal cardholders in the past 2 years, including switchers. Business cardholders remain eligible. Cannot be combined with other offers.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-cash-back-card.html" target="_blank" rel="noopener">Source: Momentum Visa</a>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ INVESTING ============ -->
+<section class="sec" data-sec="invest">
+  <div class="sec-h"><h2>Investing</h2><span>Transfer and funding bonuses</span></div>
+  <div class="grid">
+
+    <article class="card" data-cat="invest">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Registered accounts</span>
+          <h3>Registered Account Transfer-In Cash Bonus</h3></div>
+        <div class="value"><div class="amt">1.5%</div><div class="lbl">cash, max $3,750</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl hot">Transfer by <b>Oct 31, 2026</b></span>
+        <span class="chip">Minimum <b>$20,000</b></span>
+        <span class="chip">TFSA · FHSA · RRSP · RESP</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Initiate a transfer of $20,000+</b> from another Canadian financial institution into an eligible registered account, between <b>May 1 and Oct 31, 2026</b>.</li>
+          <li><b>Get the assets settled within 60 days</b> of your first transferred asset being funded.</li>
+          <li><b>Set up recurring contributions of at least $100/month</b> and keep them running for a minimum of <b>6 consecutive months</b>. This condition is easy to overlook and will cost you the bonus.</li>
+          <li><b>Leave the money in place for at least 6 consecutive months</b> after the enrolment period.</li>
+        </ol>
+        <div class="note"><b>Bonus tiers:</b> $20,000 → $300 · $25,000 → $375 · $50,000 → $750 · $100,000 → $1,500 · $200,000 → $3,000 · $250,000 → $3,750 (the cap).</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print &amp; payout timing</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Eligible accounts</dt><dd>TFSA, FHSA, RRSP, RESP. <b>Locked-in plans such as LIRAs are excluded.</b></dd>
+            <dt>Payout</dt><dd>Deposited to the eligible registered account within approximately 8 months from the end of the enrolment period.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">Clients who received a Scotiabank cash bonus into the same eligible registered account type within the 24 months preceding the offer period.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/investing/campaigns/transfer-in-offer.html" target="_blank" rel="noopener">Source: Transfer-in offer</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="invest">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Self-directed</span><span class="tag new">Closes first</span>
+          <h3>Scotia iTRADE® New Client Offer (code SUM26)</h3></div>
+        <div class="value"><div class="amt">up to $6,000</div><div class="lbl">cash + free trades</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip dl hot">Enrol by <b>Aug 31, 2026</b> — 13 days</span>
+        <span class="chip dl">Fund by <b>Sep 30, 2026</b></span>
+        <span class="chip">Hold until <b>Jul 30, 2027</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Apply with offer code <span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1f2f5;padding:1px 6px;border-radius:4px">SUM26</span> by Aug 31, 2026.</b> Without the code at application, you're out.</li>
+          <li><b>Fund at least $2,500 by Sep 30, 2026.</b></li>
+          <li><b>Take the applicable bonus.</b> Transferring from a <b>non-Scotiabank</b> institution earns <b>1% cash back, up to $6,000</b>. Transferring from within the Scotiabank group earns a flat tier instead: $25 ($2,500–$4,999) · $50 ($5,000–$24,999) · $125 ($25,000–$49,999) · $250 ($50,000–$249,999) · $450 · $900 · $1,800 · $3,000 at $2M+.</li>
+          <li><b>Keep the assets in place through Jul 30, 2027.</b> Withdraw early and the bonus is forfeited.</li>
+          <li><b>Use the mobile app for trades.</b> Eligible stock, ETF and options base commissions are rebated up to $9.99 per trade, on trades placed through the iTRADE mobile app until Dec 31, 2026.</li>
+        </ol>
+        <div class="note"><b>This is the most time-sensitive item on the page.</b> Enrolment closes Aug 31 — under two weeks from today. Funding can follow a month later.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print &amp; payout timing</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Cash bonus paid</dt><dd>By Aug 31, 2027. Trade commission rebates paid by Jan 29, 2027.</dd>
+            <dt>Good standing</dt><dd>Account must have no margin calls or disallowed debit positions.</dd>
+            <dt class="excl">Not eligible</dt><dd class="excl">On joint accounts, only the primary account holder qualifies.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiaitrade.com/en/home/summer-offer.html" target="_blank" rel="noopener">Source: Scotia iTRADE summer offer</a>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ MORTGAGE & PERKS ============ -->
+<section class="sec" data-sec="other">
+  <div class="sec-h"><h2>Mortgage &amp; everyday perks</h2><span>Ongoing programs with no fixed deadline</span></div>
+  <div class="grid">
+
+    <article class="card" data-cat="other">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Fuel</span>
+          <h3>Scotiabank + Shell</h3></div>
+        <div class="value"><div class="amt">up to 10¢/L</div><div class="lbl">in combined value</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip">V-Power promo to <b>Jun 1, 2027</b></span>
+        <span class="chip">Cap <b>1,000 L/month</b> per card</span>
+        <span class="chip">Linking takes <b>up to 48h</b></span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Sign in to the Shell benefits page</b> inside your Scotiabank online account.</li>
+          <li><b>Confirm your cards.</b> Eligible cards are pre-selected — review and accept the terms.</li>
+          <li><b>Link a Shell Go+ account.</b> Sign in or create one. Allow up to 48 hours before savings activate.</li>
+          <li><b>Just pay with the linked card</b> at participating Shell stations. Discounts apply automatically.</li>
+        </ol>
+        <div class="note"><b>Where the 10¢ comes from:</b> 3¢/L instant on all grades with any linked Scotiabank debit or credit card, plus 4¢/L on Shell V-Power with a linked Scene+ earning credit card (May 26, 2026 – Jun 1, 2027), plus up to 3¢/L in Scene+ point value. Only V-Power buyers on a Scene+ card see the full amount.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Eligible cards</dt><dd>All eligible Scotiabank debit cards, Scene+ earning credit cards (Passport Visa Infinite, Gold Amex, Scene+ Visa and others), and select Tangerine credit cards. Business: Home Hardware PRO Visa Business (enhanced 5¢/L on premium) and Passport Visa Infinite Business.</dd>
+            <dt>Limit</dt><dd>1,000 litres per month per Scotiabank debit card and per credit card account, resetting monthly.</dd>
+            <dt>Scene+ linking</dt><dd>Members with a linked Scene+ credit card are auto-linked to Shell Go+; others must link manually.</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/programs-services/shell.html" target="_blank" rel="noopener">Source: Scotiabank + Shell</a>
+        </div>
+      </details>
+    </article>
+
+    <article class="card" data-cat="other">
+      <div class="card-h">
+        <div class="t"><span class="tag c">Mortgage</span>
+          <h3>Scotia Mortgage+ Program</h3></div>
+        <div class="value"><div class="amt">Preferred rate</div><div class="lbl">amount not published</div></div>
+      </div>
+      <div class="meta">
+        <span class="chip">No published end date</span>
+        <span class="chip">STEP mortgages only</span>
+        <span class="chip">Rate set by advisor</span>
+      </div>
+      <div class="how">
+        <h4>How to get it</h4>
+        <ol class="steps">
+          <li><b>Take a Scotia Total Equity Plan (STEP) mortgage</b> — new purchase, switch, or refinance of an existing STEP mortgage.</li>
+          <li><b>Set up pre-authorized mortgage payments</b> from an eligible Scotiabank bank account.</li>
+          <li><b>Hold or open one other eligible Scotia product</b> — investments, insurance, a credit card, or similar.</li>
+          <li><b>Ask a home financing advisor for the actual number.</b> Scotiabank does not publish the discount; it's set case by case.</li>
+        </ol>
+        <div class="note"><b>Not available</b> for mortgage renewals, restructures, or pre-approvals. Open to both new and existing clients.</div>
+      </div>
+      <details class="fine">
+        <summary>Fine print</summary>
+        <div class="fine-body">
+          <dl>
+            <dt>Verbatim terms</dt><dd>"Available on Scotia Total Equity® Plan (STEP) mortgages (including refinanced STEP mortgages) only with pre-authorized mortgage payments set up from an eligible Scotiabank bank account plus customer must have or open one other eligible Scotia product. Not eligible for mortgage renewals, restructures, or pre-approvals. Additional conditions and exclusions apply."</dd>
+            <dt>Stability</dt><dd>"This Program may be changed, withdrawn, suspended, or extended at any time without notice."</dd>
+          </dl>
+          <a class="src" href="https://www.scotiabank.com/ca/en/personal/mortgages/mortgage-programs/mortgage-plus.html" target="_blank" rel="noopener">Source: Scotia Mortgage+</a>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+  <div class="disc">
+    <b>How to read this sheet.</b> Every figure, date and condition above was taken from Scotiabank's own public pages on <b>August 18, 2026</b>, and each card links to the page it came from. Summaries are condensed — before acting on any offer, open the source link and read the full legal terms, which govern.<br><br>
+    <b>Two patterns worth internalizing.</b> First, nearly every credit card offer excludes anyone who has been a <em>primary or secondary</em> cardholder of any Scotiabank personal credit card in the past 2 years — a supplementary card on a partner's account counts and will disqualify you. Second, "up to $X" headline values bundle projected rewards, fee waivers and estimated savings alongside the actual bonus; the cash you can bank is always smaller than the headline.<br><br>
+    <b>Stacking.</b> The chequing bundle, savings bonus and credit card bonus are designed to combine, and StartRight layers program perks on top of the same chequing mechanics. But the 2-year exclusions are shared across products — opening a no-fee card today can disqualify you from a $250 welcome bonus tomorrow. Sequence deliberately.<br><br>
+    Prepared for personal reference. Not financial advice — Claude is not a financial advisor, and offer terms change without notice.
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q'),
+      tabs = document.getElementById('tabs'),
+      cards = Array.prototype.slice.call(document.querySelectorAll('.card')),
+      secs = Array.prototype.slice.call(document.querySelectorAll('.sec')),
+      countEl = document.getElementById('count'),
+      emptyEl = document.getElementById('empty'),
+      expandBtn = document.getElementById('expand'),
+      filter = 'all';
+
+  cards.forEach(function(c){ c._txt = c.textContent.toLowerCase(); });
+
+  function apply(){
+    var term = q.value.trim().toLowerCase(), shown = 0, live = {};
+    cards.forEach(function(c){
+      var okCat = (filter === 'all' || c.dataset.cat === filter),
+          okTxt = (!term || c._txt.indexOf(term) > -1),
+          ok = okCat && okTxt;
+      c.style.display = ok ? '' : 'none';
+      if(ok){ shown++; live[c.dataset.cat] = true; }
+    });
+    secs.forEach(function(s){
+      s.style.display = live[s.dataset.sec] ? '' : 'none';
+    });
+    countEl.textContent = shown + (shown === 1 ? ' offer' : ' offers') + ' shown';
+    emptyEl.style.display = shown ? 'none' : 'block';
+  }
+
+  q.addEventListener('input', apply);
+
+  tabs.addEventListener('click', function(e){
+    var b = e.target.closest('.tab'); if(!b) return;
+    tabs.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+    b.classList.add('on');
+    filter = b.dataset.f;
+    apply();
+  });
+
+  expandBtn.addEventListener('click', function(){
+    var all = Array.prototype.slice.call(document.querySelectorAll('details.fine')),
+        anyClosed = all.some(function(d){ return !d.open; });
+    all.forEach(function(d){ d.open = anyClosed; });
+    expandBtn.textContent = anyClosed ? 'Collapse all fine print' : 'Expand all fine print';
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>
